@@ -68,8 +68,8 @@ __Step 4: MySQL actions (Tab 2)__
 Directory: `cd /.../consCIENCIES/`   
 Database: `mysql -u user_db -p (pass_db)`
 
-Drop database: `drop database consciencies;`  
-Create database: `create database consciencies;`  
+Drop database: `drop database name\_db;`  
+Create database: `create database name\_db;`  
 Exit: `exit;`
 
 Modificate fields of database: `python manage.py makemigrations`  
@@ -80,7 +80,7 @@ __Step 5: Load texts (Tab 2)__
 Load translations: `python excel_to_mongodb.py`
 
 __Step 6: Run Server (Tab 3)__  
-Directory: `cd /.../urGENTestimar/ `   
+Directory: `cd /.../consCIENCIES/ `   
 Runserver: `python manage.py runserver localhost:port`
 
 ### Access client ###
