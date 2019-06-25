@@ -8,7 +8,7 @@ This participatory experiment consist on a set of dilemmas that study how we beh
 
 This experiment is performed in groups of 6 participants. 
 
-![](https://github.com/CitizenSocialLab/consCIENCIES/blob/master/images/biennal/32138117457_1e04bd7c69_o.jpg)  |  ![](https://github.com/CitizenSocialLab/consCIENCIES/blob/master/images/biennal/32138117917_18a516a214_o.jpg)
+[(c) All Rights Reserved](https://github.com/CitizenSocialLab/consCIENCIES/blob/master/images/biennal/32138117457_1e04bd7c69_o.jpg)
 
 ## Data ##
 **Not available**  
