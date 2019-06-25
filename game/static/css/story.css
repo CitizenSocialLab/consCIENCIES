@@ -1,0 +1,105 @@
+/*********/
+/* Story */
+/*********/
+
+.main_text {
+    position: absolute;
+    top: 120px;
+    left: 0px;
+    width: 1024px;
+    padding-left: 50px;
+    padding-right: 100px;
+    font-size: 20px;
+    text-align: center;
+    font-family: montserratbold;
+}
+
+#button-storyA {
+    position: absolute;
+    top: 170px;
+    left: 330px;
+    height: 100px;
+    text-transform: none;
+    font-size: 18px;
+}
+
+#button-storyB {
+    position: absolute;
+    top: 280px;
+    left: 330px;
+    height: 100px;
+    text-transform: none;
+    font-size: 18px;
+}
+
+#button-storyC {
+    position: absolute;
+    top: 390px;
+    left: 330px;
+    height: 100px;
+    text-transform: none;
+    font-size: 18px;
+}
+
+#button-storyD {
+    position: absolute;
+    top: 500px;
+    left: 330px;
+    height: 100px;
+    text-transform: none;
+    font-size: 18px;
+}
+
+/*************/
+/* Narrative */
+/*************/
+
+.narrative_title {
+    position: absolute;
+    top: 140px;
+    /* width: 1024px; */
+    font-size: 28px;
+    text-align: left;
+    padding-left: 15px;
+    padding-right: 15px;
+    left: 15px;
+    color: #fff;
+    background-color: #f53410;
+    font-weight: normal;
+    font-family: latoblack;
+    margin-left: 30px;
+}
+.narrative_text {
+    position: absolute;
+    top: 220px;
+    left: 0px;
+    width: 1024px;
+    padding-left: 50px;
+    padding-right: 100px;
+    font-size: 20px;
+    text-align: justify;
+    font-family: montserratmedium;
+}
+
+.text_bold {
+    font-size: 20px;
+    font-family: montserratbold;
+}
+
+.text_italic {
+    font-size: 20px;
+    font-family: montserratregular;
+    font-style: italic;
+}
+
+.user_info {
+    position: absolute;
+    top: 105px;
+    right: 0px;
+    width: 610px;
+    text-align: right;
+    color: #444444;
+    font-size: 18px;
+    z-index: 2;
+    font-family: latoblack;
+}

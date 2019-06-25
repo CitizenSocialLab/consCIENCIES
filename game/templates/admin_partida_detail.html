@@ -1,0 +1,107 @@
+{% extends "admin.html" %}
+
+
+{% block stylesheet %}
+    <link href="/static/css/admin.css" rel="stylesheet" media="screen">
+    <link href="/static/css/admin_partida_detail.css" rel="stylesheet" media="screen">
+{% endblock %}
+
+
+{% block content_admin %}
+
+    <div id="usuaris_titol" hidden>La partida no existe</div>
+    <div id="table_partida"></div>
+    <div id="table_users"></div>
+
+{% endblock %}
+
+{% block javascript %}
+
+        <script>
+            function tancarPartida(num_partida) {
+                //console.log("Tancant partida " + num_partida);
+                $.ajax({
+                    url: '/es/ws/tancar_partida/'+num_partida+'/'
+                });
+            }
+
+            function update_estat() {
+                $.ajax({
+                    url: '/es/ws/stats_partida_detail/{{ num_partida }}/',
+                    success: function(data) {
+
+                        $("#table_partida").empty();
+                        $("#table_users").empty();
+
+
+                            var table1 = '<table class="partides">';
+
+                            table1+="<tr style='cellpadding:10;'>";
+                            table1+="<td colspan=6 style=font-size:22px;font-weight:bold;cell></td>";
+                            table1+="</tr>";
+                            table1+='<tr class="top_bold bottom_bold">';
+                            table1+='<td class="row_header" style="width:30px;"> ID </td>';
+                            table1+='<td class="row_header" style="width:30px;"> Created </td>';
+                            table1+='<td class="row_header" style="width:30px;"> Ended </td>';
+                            table1+='<td class="row_header" style="width:30px;"> Time </td>';
+                            table1+='<td class="row_header" style="width:30px;"> Selected </td>';
+                            table1+='<td class="row_header" style="width:30px;"> Threshold </td>';
+                            table1+='<td class="row_header" style="width:30px;"> Achieved </td>';
+
+                            table1+="</tr>";
+                            table1+="</tr>";
+                            table1 += '<td class="row_standard;">' + data.num_partida + '</td>';
+                            table1 += '<td class="row_standard;">' + data.date_created + '</td>';
+                            table1 += '<td class="row_standard;">' + data.date_ended + '</td>';
+                            table1 += '<td class="row_standard;">' + data.time + '</td>';
+                            table1 += '<td class="row_standard;">' + data.selections + '</td>';
+                            table1 += '<td class="row_standard;">' + data.threshold + '</td>';
+                            table1 += '<td class="row_standard;" style="font-weight:bold;">' + data.achieved + '</td>';
+                            table1+="</tr>";
+
+                            var table3 = '<table class="partides">';
+
+                            table3+="<tr style='cellpadding:10;'>";
+                            table3+="<td colspan=6 style=font-size:22px;font-weight:bold;cell></td>";
+                            table3+="</tr>";
+                            table3+='<tr class="top_bold bottom_bold">';
+                            table3+='<td class="row_header" style="width:10px;"> ID </td>';
+                            table3+='<td class="row_header" style="width:30px;"> Nickname </td>';
+                            table3+='<td class="row_header" style="width:10px;"> Status </td>';
+                            table3+='<td class="row_header" style="width:30px;"> Story </td>';
+                            table3+='<td class="row_header" style="width:30px;"> Selection </td>';
+                            table3+='<td class="row_header" style="width:30px;"> Time </td>';
+                            table3+="</tr>";
+                            table3+="</tr>";
+                            for (i=0; i < data.nickname.length; i++) {
+                                table3 += '<td class="row_standard;">' + data.id[i] + '</td>';
+                                table3 += '<td class="row_standard;">' + data.nickname[i] + '</td>';
+                                table3 += '<td class="row_standard;">' + data.status[i] + '</td>';
+                                table3 += '<td class="row_standard;">' + data.story[i] + '</td>';
+                                table3 += '<td class="row_standard;">' + data.selection[i] + '</td>';
+                                table3 += '<td class="row_standard;">' + (data.time_selection[i]) + '</td>';
+                                table3+="</tr>";
+                            }
+
+
+
+                            $("#table_users").append(table3 );
+                            $("#table_partida").append(table1 );
+
+
+
+
+                        setTimeout(function(){update_estat()}, 2000);
+                    },
+                    error: function(data) {
+                        setTimeout(function(){update_estat()}, 2000);
+                    }
+                });
+            }
+
+            $(document).ready(function() {
+                update_estat();
+            });
+        </script>
+
+{% endblock %}

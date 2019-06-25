@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheet %}
+    <link href="/static/css/index.css" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block content %}
+    <div class="topdiv">
+
+
+        <div class="header_background_red"></div>
+        <img src="/static/img/logo_white.png" class="header_logo"/>
+        <hr class="separador-top" />
+
+        <div class="main_title"> {{ text.main.main_title | safe }} </div>
+        <div class="main_text"> {{ text.main.main_text | safe }} </div>
+
+
+        <div class="logos_llenguatge">
+            <a href="/ca/">
+                <button class="bx bx-push bx-white-red logos_idioma">CA</button>
+            </a>
+            <a href="/es/" class="logos_idioma">
+                <button class="bx bx-push bx-white-red logos_idioma">ES</button>
+            </a>
+            <!--
+            <a href="/en/" class="logos_idioma">
+                <button class="bx bx-push bx-blaustencilwhite logos_idioma">EN</button>
+            </a>
+            -->
+
+        </div>
+
+        <hr class="separador-bottom" />
+        <div class="button_participate">
+            <button id="nickname" type="button" onclick="location.href='/{{ lang }}/user/nickname'" name="nickname" class="bx bx-push bx-red" >
+                {{ text.main.main_button }}
+            </button>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+    <script>
+        $("a").click(function (event) {
+            event.preventDefault();
+            window.location = $(this).attr("href");
+        });
+    </script>
+
+{% endblock %}

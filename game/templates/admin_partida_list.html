@@ -1,0 +1,72 @@
+{% extends "admin.html" %}
+
+
+{% block stylesheet %}
+    <link href="/static/css/admin.css" rel="stylesheet" media="screen">
+    <link href="/static/css/admin_partida_list.css" rel="stylesheet" media="screen">
+{% endblock %}
+
+
+{% block content_admin %}
+    <div id="llista_partides_titol">Listado últimas partidas</div>
+    <div id="llista_partides"></div>
+{% endblock %}
+
+{% block javascript %}
+
+        <script>
+
+            function detailPartida(num_partida) {
+                window.location.href = '/es/admin/partida_detail/'+num_partida+'/'
+            }
+
+
+            function update_list() {
+                $.ajax({
+                    url: '/es/ws/llistat_partides/',
+                    success: function(data) {
+
+                            mytext = '<table width="90%" class="partides"><tr>'+
+                                    '<th style="font-size:15px; text-align:center; font-weight:bold; width:50px;">'+ "id" + '</th>'+
+                                    '<th style="font-size:15px; text-align:center; font-weight:bold; width:120px;">'+ "Started" +'</th>'+
+                                    '<th style="font-size:15px; text-align:center; font-weight:bold; width:120px;">'+ "Ended" +'</th>'+
+                                    '<th style="font-size:15px; text-align:center; font-weight:bold; width:120px;">'+ "Threshold" +'</th>'+
+                                    '<th style="font-size:15px; text-align:center; font-weight:bold; width:120px;">'+ "Achieved" +'</th>'+
+                                    '<th></th>';
+
+                            for (i = 0; i < data.partida.length; i++) {
+
+                                style_threshold = "font-size:16px; text-align:center; width:120px;"
+
+                                if (data.partida[i].achieved){
+                                    style_threshold = "font-size:16px; text-align:center; width:120px; font-weight:bold;"
+                                }
+
+                                mytext += '<tr>' +
+                                        '<td style="font-size:14px; text-align:center; width:50px;">' + data.partida[i].num_partida  + '</td>'+
+                                        '<td style="font-size:14px; text-align:center; width:120px;">' + data.partida[i].date_created + '</td>'+
+                                        '<td style="font-size:14px; text-align:center; width:120px;">' + data.partida[i].date_ended + '</td>'+
+                                        '<td style="font-size:16px; text-align:center; width:120px;">' + data.partida[i].threshold + ' </td>'+
+                                        '<td style="font-size:16px; text-align:center; width:120px; font-weight:bold;">' + data.partida[i].achieved + ' </td>'+
+                                        '<td><button onclick="detailPartida(' + data.partida[i].num_partida + ')" class="bx-push bx bx-black" style="width:100px;height:30px;font-size:14px;padding:0px 0px 0px 0px;">' + "Detalles" + '</button></td>'+
+                                        '<td></td>'+
+                                        '</tr>'
+                            }
+                            $('#llista_partides').html(mytext);
+
+                        setTimeout(function(){update_list()}, 1000);
+                    },
+                    error: function(data) {
+                         setTimeout(function(){update_list()}, 1000);
+                    }
+                });
+            }
+
+            $(document).ready(function() {
+                update_list();
+            });
+        </script>
+
+
+
+{% endblock %}

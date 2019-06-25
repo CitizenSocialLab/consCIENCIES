@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheet %}
+    <link href="/static/css/story.css" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block content %}
+    <div class="topdiv">
+
+        <div class="user_info"><span class="glyphicon glyphicon-user" style="margin-left: 20px;"></span> {{ user.nickname }}</div>
+
+        <!--<div class="header_title">{{ text.story.title }}</div>-->
+        <div class="header_background_red"></div>
+        <img src="/static/img/logo_white.png" class="header_logo"/>
+        <hr class="separador-top" />
+
+        <div id='main_text' class="main_text"> {{ text.story.main_text| safe }} </div>
+
+        <form method="post" action="/{{ lang }}/user/story">
+
+            <button name="story" id="button-storyA" value="A" class="bx-push bx bx-red">{{ text.story.title_A_button | safe }}</button>
+            <button name="story" id="button-storyB" value="B" class="bx-push bx bx-red">{{ text.story.title_B_button | safe }}</button>
+            <button name="story" id="button-storyC" value="C" class="bx-push bx bx-red">{{ text.story.title_C_button | safe }}</button>
+            <button name="story" id="button-storyD" value="D" class="bx-push bx bx-red">{{ text.story.title_D_button | safe }}</button>
+
+        </form>
+
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+    <script>
+        $("a").click(function (event) {
+            event.preventDefault();
+            window.location = $(this).attr("href");
+        });
+
+        $(document).ready(function() {
+
+            if ({{ story_A }} == 1) {
+                $('#button-storyA').attr('disabled','disabled');
+                $('#button-storyA').addClass('disabled');
+            }
+            if ({{ story_B }} == 1) {
+                $('#button-storyB').attr('disabled','disabled');
+                $('#button-storyB').addClass('disabled');
+            }
+            if ({{ story_C }} == 1) {
+                $('#button-storyC').attr('disabled','disabled');
+                $('#button-storyC').addClass('disabled');
+            }
+            if ({{ story_D }} == 1) {
+                $('#button-storyD').attr('disabled','disabled');
+                $('#button-storyD').addClass('disabled');
+            }
+
+         });
+    </script>
+
+{% endblock %}

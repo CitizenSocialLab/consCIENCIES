@@ -1,0 +1,23 @@
+.avis_legal {
+    position: absolute;
+    top: 125px;
+    left: 10px;
+    width: 980px;
+    text-align: justify;
+    font-size: 16px;
+    font-family: montserratlight;
+}
+
+.text_bold {
+    font-size: 16px;
+    font-family: montserratbold;
+}
+
+.text_bold_underline {
+    font-size: 16px;
+    font-family: montserratbold;
+    text-decoration: underline;
+}
+
+
+

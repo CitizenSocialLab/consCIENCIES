@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheet %}
+    <link href="/static/css/index.css" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block content %}
+    <div class="topdiv">
+
+        <div class="background"></div>
+        <img src="/static/img/logo_white.png" class="header_logo"/>
+
+
+        <div class="main_text_final"> {{ text.final_joc.main_text_final | safe }} </div>
+        <img id="imatge_logos" src="/static/img/logos/logos.png"/>
+
+        <hr class="separador-bottom" />
+
+        <div class="button_participate">
+            <form method="post" action="/{{ lang }}/">
+                <button class="bx bx-push bx-red">
+                    {{ text.final_joc.boto }}
+                </button>
+            </form>
+        </div>
+
+    </div>
+
+{% endblock %}

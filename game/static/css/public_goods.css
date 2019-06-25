@@ -1,0 +1,223 @@
+/************/
+/** Part I **/
+/************/
+
+.circle_time {
+    position: absolute;
+    top: 120px;
+    left: 100px;
+    background: #000;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    line-height: 100px;
+    color: #fff;
+    margin:5px;
+    font-family: montserratbold;
+}
+
+.title_time {
+    position: absolute;
+    top: 230px;
+    left: 100px;
+    width: 100px;
+    font-size: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: latoblack;
+}
+
+.text_time {
+    position: absolute;
+    top: 255px;
+    left: 100px;
+    width: 100px;
+    font-size: 14px;
+    text-align: center;
+    font-family: latolight;
+}
+
+.circle_goal {
+    position: absolute;
+    top: 120px;
+    left: 400px;
+    background: #000;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    line-height: 100px;
+    color: #fff;
+    margin:5px;
+    font-family: montserratbold;
+}
+
+.title_goal {
+    position: absolute;
+    top: 230px;
+    left: 400px;
+    width: 100px;
+    font-size: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: latoblack;
+}
+
+.text_goal {
+    position: absolute;
+    top: 255px;
+    left: 400px;
+    width: 100px;
+    font-size: 14px;
+    text-align: center;
+    font-family: latolight;
+}
+
+.circle_answers {
+    position: absolute;
+    top: 120px;
+    left: 250px;
+    background: #000;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    line-height: 100px;
+    color: #fff;
+    margin:5px;
+    font-family: montserratbold;
+}
+
+.circle_time.finished {
+    background: #ddd;
+    color: #f53410;
+}
+
+.circle_answers.finished {
+    background: #ddd;
+    color: #f53410;
+}
+.circle_goal.finished {
+    background: #ddd;
+    color: #f53410;
+}
+
+.circle_goal.achieved {
+    background: #f53410;
+    color: #000;
+}
+
+.title_answers {
+    position: absolute;
+    top: 230px;
+    left: 250px;
+    width: 100px;
+    font-size: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: latoblack;
+}
+
+.text_answers {
+    position: absolute;
+    top: 255px;
+    left: 250px;
+    width: 100px;
+    font-size: 14px;
+    text-align: center;
+    font-family: latolight;
+}
+
+.title_decisions {
+    position: absolute;
+    top: 120px;
+    left: 575px;
+    font-size: 20px;
+    text-align: justify;
+    font-family: latoblack;
+}
+
+#table_selections {
+    position: absolute;
+    top: 160px;
+    left: 575px;
+    text-align: left;
+}
+
+.table_selections th {
+    font-size: 18px;
+    font-weight: bold;
+    width: 70px;
+    text-align: left;
+    font-family: latoblack;
+}
+
+.table_selections td {
+    font-size: 20px;
+    width: 70px;
+    text-align: left;
+    font-family: latoregular;
+}
+
+.esperant_partida {
+    position: absolute;
+    top: 325px;
+    left: 300px;
+    width: 400px;
+    text-align: center;
+}
+
+/*************/
+/** Part II **/
+/*************/
+
+.question {
+    position: absolute;
+    top: 450px;
+    left: 0px;
+    width: 1024px;
+    padding-left: 50px;
+    padding-right: 100px;
+    font-size: 20px;
+    text-align: center;
+    font-family: montserratbold;
+}
+
+#button-cooperate-0 {
+    position: absolute;
+    top: 500px;
+    left: 30px;
+}
+
+#button-cooperate-1 {
+    position: absolute;
+    top: 500px;
+    left: 345px;
+}
+
+#button-cooperate-2 {
+    position: absolute;
+    top: 500px;
+    left: 660px;
+}
+
+.result {
+    position: absolute;
+    top: 450px;
+    left: 0px;
+    width: 1024px;
+    padding-left: 50px;
+    padding-right: 100px;
+    font-size: 20px;
+    text-align: justify;
+    font-family: montserratregular;
+}
+
+.text_bold {
+    font-size: 20px;
+    font-family: montserratbold;
+}

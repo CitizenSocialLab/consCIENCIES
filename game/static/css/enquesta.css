@@ -1,0 +1,163 @@
+.user_info {
+    position: absolute;
+    top: 105px;
+    right: 0px;
+    width: 610px;
+    text-align: right;
+    color: #444444;
+    font-size: 18px;
+    z-index: 2;
+    font-family: latoblack;
+}
+
+/************/
+/* Question */
+/************/
+
+.pregunta_titol {
+    text-align: left;
+    font-weight: normal;
+    font-size: 18px;
+    color: #000;
+    font-family: montserratbold;
+    padding-bottom: 5px;
+}
+
+.pregunta_titol_error {
+    text-align: left;
+    font-weight: normal;
+    font-size: 16px;
+    color: #f00;
+    font-family: montserratbold;
+    padding-bottom: 5px;
+}
+
+/**********/
+/* Botons */
+/**********/
+
+.boto_petit {
+    width:100px;
+    height:45px;
+    padding-top: 12px;
+}
+
+.boto_mitja {
+    width:185px;
+    height:45px;
+    padding-top: 12px;
+}
+
+.boto_mitja_ample {
+    width:185px;
+    height:70px;
+    line-height: 20px; /* Lines with same font-size */
+}
+
+.boto_gran {
+    width:250px;
+    height:45px;
+    padding-top: 12px;
+}
+
+.boto_gran_ample {
+    width:250px;
+    height:70px;
+    line-height: 16px; /* Lines with smaller font-size */
+}
+
+.boto_llarg {
+    width:410px;
+    height:45px;
+    padding-top: 12px;
+
+}
+
+.boto_llarg2 {
+    width:310px;
+    height:45px;
+    padding-top: 12px;
+}
+
+.boto_superllarg {
+    width:830px;
+    height:45px;
+    padding-top: 12px;
+}
+
+/********/
+/* Typo */
+/********/
+
+.small_typo {
+    font-size: 14px;
+    pointer-events: none;
+}
+
+/************/
+/* Survey 1 */
+/************/
+
+.pregunta1 {
+    position:absolute;
+    top:105px;
+    left:110px;
+    width:880px;
+    text-align: left;
+    padding-bottom: 5px;
+}
+
+.pregunta2 {
+    position:absolute;
+    top:185px;
+    left:110px;
+    width:800px;
+    text-align: left;
+}
+
+.pregunta3 {
+    position: absolute;
+    top: 320px;
+    left: 110px;
+    width: 800px;
+    text-align: left;
+}
+
+.pregunta4 {
+    position: absolute;
+    top: 405px;
+    left: 110px;
+    width: 800px;
+    text-align: left;
+}
+
+
+/************/
+/* Survey 2 */
+/************/
+
+.pregunta5 {
+    position:absolute;
+    top:110px;
+    left:110px;
+    width:880px;
+    text-align: left;
+}
+
+.pregunta6 {
+    position:absolute;
+    top:200px;
+    left:110px;
+    width:880px;
+    text-align: left;
+}
+
+.pregunta7 {
+    position:absolute;
+    top:290px;
+    left:110px;
+    width:880px;
+    text-align: left;
+}
+
+

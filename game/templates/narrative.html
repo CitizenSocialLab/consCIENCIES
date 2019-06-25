@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheet %}
+    <link href="/static/css/story.css" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block content %}
+    <div class="topdiv">
+
+        <div class="user_info"><span class="glyphicon glyphicon-user" style="margin-left: 20px;"></span> {{ user.nickname }}</div>
+
+        <!--<div class="header_title">{{ text.story.title }}</div>-->
+        <div class="header_background_red"></div>
+        <img src="/static/img/logo_white.png" class="header_logo"/>
+
+        <div id='narrative_title' class="narrative_title"></div>
+        <div id='narrative_text' class="narrative_text"></div>
+
+        <hr class="separador-bottom" />
+        <div class="page_button_right">
+            <button class="bx bx-push bx-red" type="submit" onclick="location.href='/{{ lang }}/user/registre'">{{ text.common.entesos }}</button>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+    <script>
+        $("a").click(function (event) {
+            event.preventDefault();
+            window.location = $(this).attr("href");
+        });
+
+        $(document).ready(function() {
+            var story = '{{ story }}'
+            if (story == 'A') {
+                $("#narrative_title").html('{{ text.story.title_A | safe }}');
+                $("#narrative_text").html('{{ text.story.story_A | safe }}');
+            }
+            if (story == 'B') {
+                $("#narrative_title").html('{{ text.story.title_B | safe }}');
+                $("#narrative_text").html('{{ text.story.story_B | safe }}');
+            }
+            if (story == 'C') {
+                $("#narrative_title").html('{{ text.story.title_C | safe }}');
+                $("#narrative_text").html('{{ text.story.story_C | safe }}');
+            }
+            if (story == 'D') {
+                $("#narrative_title").html('{{ text.story.title_D | safe }}');
+                $("#narrative_text").html('{{ text.story.story_D | safe }}');
+            }
+         });
+    </script>
+
+{% endblock %}

@@ -1,0 +1,92 @@
+/**************/
+/* Index Home */
+/**************/
+
+.main_title {
+    position: absolute;
+    top: 140px;
+    width: 1024px;
+    font-size: 30px;
+    text-align: center;
+    color: #000;
+    font-weight: normal;
+    font-family: latoblack;
+}
+
+.main_text {
+    position: absolute;
+    top: 200px;
+    width: 900px;
+    margin-left: 40px;
+    font-size: 20px;
+    text-align: justify;
+    color: #000;
+    font-family: montserratregular;
+}
+
+.button_participate {
+    position: absolute;
+    top: 605px;
+    left: 685px;
+    text-align: right;
+}
+
+.logos_llenguatge {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    text-align: right;
+}
+
+.logos_idioma {
+    font-size: 16px;
+    width: 50px;
+    height: 50px;
+    padding: 0px;
+}
+
+.background {
+    z-index: -5;
+    top:0;
+    left:0;
+    width:1024px;
+    height:768px ;  /* XX: ADDED 100 */
+    margin-left: -15px;
+    background: #fff; /* Old browsers */
+}
+
+/***************/
+/* Index Final */
+/***************/
+
+
+.main_text_final {
+    position: absolute;
+    top: 100px;
+    width: 900px;
+    margin-left: 40px;
+    font-size: 20px;
+    text-align: justify;
+    color: #000;
+    font-family: montserratregular;
+}
+
+.text_bold {
+    font-size: 20px;
+    font-family: montserratbold;
+}
+
+.text_underline {
+    font-size: 20px;
+    font-family: montserratregular;
+    text-decoration: underline;
+
+}
+
+#imatge_logos {
+    /* height: 180px; */
+    width: 800px;
+    position: absolute;
+    top: 420px;
+    left: 100px;
+}

@@ -1,0 +1,53 @@
+/* Register */
+
+.user_info {
+    position: absolute;
+    top: 105px;
+    right: 0px;
+    width: 610px;
+    text-align: right;
+    color: #444444;
+    font-size: 18px;
+    z-index: 2;
+    font-family: latoblack;
+}
+
+#boto_jugar {
+    position: absolute;
+    top: 300px;
+    left: 255px;
+    width: 500px;
+    height: 220px;
+    text-align: center;
+    font-size: 24px;
+    line-height: 120%;
+
+}
+
+.error_partida {
+    position: absolute;
+    top: 525px;
+    left: 280px;
+    width: 454px;
+    height: 35px;
+    color: #ff0000;
+    text-align: center;
+    font-size: 23px;
+}
+
+.esperant_partida {
+    position: absolute;
+    top: 355px;
+    left: 300px;
+    width: 400px;
+    text-align: center;
+}
+
+.esperant_partida_text {
+    position: absolute;
+    top: 450px;
+    left: 250px;
+    width: 500px;
+    text-align: center;
+}
+

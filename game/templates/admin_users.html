@@ -1,0 +1,69 @@
+{% extends "admin.html" %}
+
+
+{% block stylesheet %}
+    <link href="/static/css/admin.css" rel="stylesheet" media="screen">
+    <link href="/static/css/admin_users.css" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block content_admin %}
+    <div id="users_1" class="userlist">
+        <table>
+            <tr>
+                <th class="th_valor">id</th>
+                <th class="th_nickname">nickname</th>
+                <th class="th_valor">game</th>
+                <th class="th_valor">total</th>
+                <th class="th_valor">A</th>
+                <th class="th_valor">B</th>
+                <th class="th_valor">C</th>
+                <th class="th_valor">D</th>
+                <th class="th_valor">Status</th>
+            </tr>
+
+        {% for user in users_1 %}
+            <tr>
+              <td class="td_valor">{{ user.id }}</td>
+              <td class="td_nickname" style="font-weight:bold;">{{ user.nickname }}</td>
+              <td class="td_valor">{{ user.current_game }}</td>
+              <td class="td_valor"">{{ user.total }}</td>
+              <td class="td_valor">{{ user.storyA }}</td>
+              <td class="td_valor">{{ user.storyB }}</td>
+              <td class="td_valor">{{ user.storyC }}</td>
+              <td class="td_valor">{{ user.storyD }}</td>
+              <td class="td_valor">{{ user.status }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+
+    <div id="users_2" class="userlist">
+        <table>
+            <tr>
+                <th class="th_valor">id</th>
+                <th class="th_nickname">nickname</th>
+                <th class="th_valor">game</th>
+                <th class="th_valor">total</th>
+                <th class="th_valor">A</th>
+                <th class="th_valor">B</th>
+                <th class="th_valor">C</th>
+                <th class="th_valor">D</th>
+                <th class="th_valor">Status</th>
+            </tr>
+
+        {% for user in users_2 %}
+            <tr>
+              <td class="td_valor">{{ user.id }}</td>
+              <td class="td_nickname" style="font-weight:bold;">{{ user.nickname }}</td>
+              <td class="td_valor">{{ user.current_game }}</td>
+              <td class="td_valor"">{{ user.total }}</td>
+              <td class="td_valor">{{ user.storyA }}</td>
+              <td class="td_valor">{{ user.storyB }}</td>
+              <td class="td_valor">{{ user.storyC }}</td>
+              <td class="td_valor">{{ user.storyD }}</td>
+              <td class="td_valor">{{ user.status }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+{% endblock %}

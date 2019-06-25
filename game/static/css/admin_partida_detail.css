@@ -1,0 +1,52 @@
+#table_partida {
+    position: absolute;
+    top: 150px;
+    left:100px;
+    width: 800px;
+    font-size:1em;
+}
+
+#table_users {
+    position: absolute;
+    top: 250px;
+    left:100px;
+    width: 800px;
+    font-size:1em;
+}
+
+.partides tr:nth-child(even) {background: #dedede  }
+
+
+.partides td {
+    text-align: center;
+}
+
+.partides{
+    width:100%;
+}
+.partides {
+    text-align: center;
+}
+
+.top_bold {
+    border-top:4px solid;
+    border-color:black;
+}
+
+.bottom_bold {
+    border-bottom:4px solid;
+    border-color:black;
+}
+
+.row_header {
+    font-size:16px;
+    font-weight: bold;
+    background: #000000;
+    color: #ffffff;
+}
+
+.row_standard {
+    font-size:16px;
+}
+
+

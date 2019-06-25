@@ -1,0 +1,78 @@
+{% extends "admin.html" %}
+
+
+{% block stylesheet %}
+    <link href="/static/css/admin.css" rel="stylesheet" media="screen">
+    <link href="/static/css/admin_stats.css" rel="stylesheet" media="screen">
+{% endblock %}
+
+
+{% block content_admin %}
+        <div id="stats_titol">
+            Info General
+        </div>
+
+        <div id="stats_info"></div>
+{% endblock %}
+{% block javascript %}
+
+    <script>
+            function update_list() {
+                $.ajax({
+                    url: '/es/ws/stats_partida/',
+                    success: function(data) {
+                        console.log(data)
+                        if(true) {
+
+                            total_partides = data.partida.length;
+                            total_partides_achieved = 0
+
+                            for (i = 0; i < data.partida.length; i++) {
+
+                                if (data.partida[i].goal_achieved) {
+                                    total_partides_achieved = total_partides_achieved + 1
+                                }
+                            }
+
+                            ratio_partides_achieved = (total_partides_achieved / total_partides)*100
+
+
+                            mytext = '<table width="90%">' +
+                                    '<tr>'+
+                                    '<th style="font-size:22px;font-weight:bold;text-align:right; width:350px; padding-right: 30px"></th>'+
+                                    '<th style="font-size:22px;font-weight:bold;text-align:left; width:200px;">'+ "Total" +'</th>'+
+
+                                    '<th></th>'+
+                                    '</tr>' +
+                                    '<tr>' +
+                                    '<th style="font-size:22px;font-weight:bold;text-align:right; width:350px; padding-right: 30px">'+ "Num. Partides" +'</th>'+
+                                    '<th style="font-size:22px;font-weight:bold;text-align:left; width:200px;">'+ total_partides +'</th>'+
+
+                                    '<th></th>'+
+                                    '</tr>' +
+                                    '<tr>' +
+                                    '<th style="font-size:22px;font-weight:bold;text-align:right; width:350px; padding-right: 30px">'+ "Target Achieved" +'</th>'+
+                                    '<th style="font-size:22px;font-weight:bold;text-align:left; width:200px;">'+ total_partides_achieved + " (" +(ratio_partides_achieved).toFixed(0)+ "%)"+'</th>'+
+
+
+                                    '<th></th>'+
+                                    '</tr>' +
+                                    '</table>';
+
+                            $('#stats_info').html(mytext);
+                        }
+                        setTimeout(function(){update_list()}, 10000);
+                    },
+                    error: function(data) {
+                        console.log("error")
+                         setTimeout(function(){update_list()}, 10000);
+                    }
+                });
+            }
+
+            $(document).ready(function() {
+                update_list();
+            });
+        </script>
+
+{% endblock %}

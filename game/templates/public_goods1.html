@@ -1,0 +1,288 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}
+    <link href="/static/css/public_goods.css" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block title %}{{ text.public_goods.screen_title }}{% endblock %}
+
+{% block content %}
+
+    <div class="topdiv-centered">
+
+
+        <!--<div class="header_title">{{ text.public_goods.header_title }}</div>-->
+        <div class="header_background_red"></div>
+        <img src="/static/img/logo_white.png" class="header_logo"/>
+
+
+        <hr class="separador-top" />
+
+        <!-- Part I -->
+
+
+        <div id="time" class="circle_time"></div>
+        <div class="title_time">{{ text.public_goods.text_time | safe }}</div>
+        <div class="text_time">{{ text.public_goods.text_time_detail | safe }}</div>
+
+        <div id="goal" class="circle_goal"></div>
+        <div class="title_goal">{{ text.public_goods.text_achieved | safe }}</div>
+        <div class="text_goal">{{ text.public_goods.text_achieved_detail | safe }}</div>
+
+        <div id="answers" class="circle_answers"></div>
+        <div class="title_answers">{{ text.public_goods.text_actions | safe }}</div>
+        <div class="text_answers">{{ text.public_goods.text_actions_detail | safe }}</div>
+
+        <div class="title_decisions">{{ text.public_goods.text_actions_taken | safe }}</div>
+        <div id="table_selections"></div>
+
+
+
+        <!-- Part II -->
+        <div id="question" class="question">{{ text.public_goods.question | safe }}</div>
+
+        <button id="button-cooperate-0" class="bx bx-push bx-red-double">{{ text.public_goods.cooperate_0_button | safe }}</button>
+        <button id="button-cooperate-1" class="bx bx-push bx-red-double">{{ text.public_goods.cooperate_1_button | safe }}</button>
+        <button id="button-cooperate-2" class="bx bx-push bx-red-double">{{ text.public_goods.cooperate_2_button | safe }}</button>
+
+        <div id="result" class="result" hidden></div>
+
+        <!-- Waiting -->
+        <div class="esperant_partida">
+            <i id="presentacio_waiting"class="fa fa-spinner fa-spin fa-5x"></i>
+        </div>
+
+        <hr class="separador-bottom" />
+
+        <div class="page_button_right" hidden>
+            <button id="boto_enquesta" type="button" onclick="location.href='/{{ lang }}/user/enquesta1'" name="survey" class="bx bx-push bx-red" >
+                {{ text.public_goods.boto_seguent }}
+            </button>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script>
+
+     function update_colors_time(time_value){
+
+        // 40 seconds time of decision
+        var proptime = time_value/40000;
+        c_time = [0x00, 0x00, 0x00, 1*proptime];
+        $('#time').css('background-color', 'rgba(' + c_time.join(',') + ')');
+        if (time_value < 5000){
+            c_text_time = [0x00, 0x00, 0x00, 1];
+            $('#time').css('color', 'rgba(' + c_text_time.join(',') + ')');
+        }
+        if (time_value <= 0){
+            c_time = [0xdd, 0xdd, 0xdd, 1];
+            $('#time').css('background-color', 'rgba(' + c_time.join(',') + ')');
+            c_text_time = [0xf5, 0x34, 0x10, 1];
+            $('#time').css('color', 'rgba(' + c_text_time.join(',') + ')');
+        }
+    }
+
+    function update_colors_actions(actions_value){
+        console.log('Update actions')
+        // 40 seconds time of decision
+        var propactions = actions_value/6;
+        c_actions = [0x00, 0x00, 0x00, 1-(1*propactions)];
+        $('#answers').css('background-color', 'rgba(' + c_actions.join(',') + ')');
+        if (actions_value > 5){
+            c_text_actions = [0x00, 0x00, 0x00, 1];
+            $('#answers').css('color', 'rgba(' + c_text_actions.join(',') + ')');
+        }
+        if (actions_value == 6){
+            c_actions = [0xdd, 0xdd, 0xdd, 1];
+            $('#answers').css('background-color', 'rgba(' + c_actions.join(',') + ')');
+            c_text_actions = [0xf5, 0x34, 0x10, 1];
+            $('#answers').css('color', 'rgba(' + c_text_actions.join(',') + ')');
+        }
+    }
+
+    function start_timing(countdown_time){
+
+        this.countdown_time = countdown_time
+        $('#time').text(Math.ceil(this.initial_time/1000) + 's');
+        var mytimer = this.countdown_time % 1000;
+        this.countdown_time = this.countdown_time - mytimer;
+        setTimeout(function(){countdown_start()}, mytimer);
+    }
+
+    function countdown_start(){
+
+        update_colors_time(this.countdown_time)
+
+        if (this.countdown_time > 0) {
+            $('#time').text(this.countdown_time/1000 + 's');
+            this.countdown_time = this.countdown_time - 1000;
+            setTimeout(function(){countdown_start()}, 1000);
+
+        } else {
+
+            $('#time').text('0s');
+            $(".page_button_right").show();
+            $('.esperant_partida').hide()
+            $('.esperant_partida_text').hide()
+            $("#button-cooperate-0").hide();
+            $("#button-cooperate-1").hide();
+            $("#button-cooperate-2").hide();
+            $("#question").hide();
+
+            send_action({{ user.id }}, 'T');
+
+            $("#result").show();
+        }
+    }
+
+    function countdown_stop(){
+        this.countdown_time = 0
+    }
+
+    function button_pressed(value) {
+
+        //Amagar botons i ensenyar mes text
+
+        $("#button-cooperate-0").hide();
+        $("#button-cooperate-1").hide();
+        $("#button-cooperate-2").hide();
+        $("#question").hide();
+
+        send_action({{ user.id }}, value);
+    }
+
+
+    //Funcio per a enviar la selecció
+    function send_action(user, accio) {
+        $.ajax({
+            url: '/es/ws/send_action_public_goods/'+user+'/'+accio+'/',
+            success: function(data) {
+                console.log(data);
+                if (data.saved == "ok") {
+                    console.log('Data saved')
+                } else {
+                    send_action(user, accio);
+                }
+            },
+            error: function(){
+                send_action(user, accio);
+            }
+        });
+    }
+
+
+
+    //Funcio per a obtenir el resultat del torn
+    function get_results(game_id, user_id) {
+        $.ajax({
+            url: '/es/ws/get_results_public_goods/'+game_id+'/'+user_id+'/',
+            success: function(data) {
+                if (data.correcte) {
+
+                    mytext = '<table class="table_selections" width="100%"><tr>'+
+                             '<th>' + "ID" +'</th>'+
+                             '<th style="width:300px;">' + "SELECTION" + '</th>'+
+                             '</tr></table>';
+
+                    for (i = 0; i < data.selections.length; i++) {
+
+                        var selection = ''
+
+                        if (data.selections[i].selection == 'D') {
+                            selection = '{{ text.public_goods.cooperate_0 }}'
+                        }
+
+                        if (data.selections[i].selection == 'I') {
+                            selection = '{{ text.public_goods.cooperate_1 }}'
+                        }
+
+                        if (data.selections[i].selection == 'C') {
+                            selection = '{{ text.public_goods.cooperate_2 }}'
+                        }
+
+                        if (data.selections[i].selection == 'T') {
+                            selection = '{{ text.public_goods.timeout }}'
+                        }
+
+                        if (data.selections[i].user_id == user_id){
+                            var color = 'color: #F53410'
+                        }else{
+                            var color = 'color: #000'
+                        }
+                        mytext += '<table class="table_selections" width="100%"><tr>'+
+                                  '<td>' + data.selections[i].user_nickname + '</td>'+
+                                  '<td style="font-weight: bold; width:300px;'+color+'">' + selection + '</td>'+
+                                  '</tr></table>'
+                    }
+
+                    $('#table_selections').html(mytext);
+
+                    $('#answers').html(data.total_selections + '/' + data.users);
+
+                    update_colors_actions(data.total_selections)
+
+                    $('#goal').html(((data.result)).toFixed(2) + '%');
+
+                    if (data.threshold > 0 & data.threshold < 0.33){
+                        $('#result').html('{{ text.public_goods.text_result_0 | safe }}')
+                    }
+                    if (data.threshold >= 0.33 & data.threshold < 0.66){
+                        $('#result').html('{{ text.public_goods.text_result_1 | safe }}')
+                    }
+                    if (data.threshold >= 0.66){
+                        $('#result').html('{{ text.public_goods.text_result_2 | safe }}')
+                    }
+
+                    // show final game
+                    $('.esperant_prisoner').hide();
+                    $('.esperant_prisoner_text').hide();
+
+                    if (data.total_selections == data.users){
+
+                        $(".page_button_right").show();
+                        $('.esperant_partida').hide()
+                        $('.esperant_partida_text').hide()
+
+                        $("#result").show();
+
+                        $("#time").addClass('finished');
+                        $("#answers").addClass('finished');
+                        $("#goal").addClass('finished');
+
+                        if (data.result>100){
+                            $("#goal").addClass('achieved');
+                        }
+
+                        countdown_stop()
+
+                    }else{
+                        setTimeout(function(){ get_results({{ user.current_game.id }}, {{ user.id }})}, 1000);
+                    }
+
+
+                } else {
+                    setTimeout(function(){ get_results({{ user.current_game.id }}, {{ user.id }})}, 1000);
+                }
+
+            },
+            error: function(data) {
+                setTimeout(function(){ get_results({{ user.current_game.id }}, {{ user.id }})}, 1000);
+            }
+        });
+    }
+
+    $(document).ready(function() {
+        $("#button-cooperate-0").on("pushed", function(e) { button_pressed('D'); }); // Defection
+        $("#button-cooperate-1").on("pushed", function(e) { button_pressed('I'); }); // Intervention
+        $("#button-cooperate-2").on("pushed", function(e) { button_pressed('C'); }); // Cooperation
+
+        get_results({{ user.current_game.id }}, {{ user.id }})
+        start_timing({{ countdown_time }})
+
+    });
+
+    </script>
+{% endblock %}
+
