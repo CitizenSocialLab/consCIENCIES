@@ -64,7 +64,6 @@ __Step 3: Run MongoDB (Tab 1)__
 Run mongodb: `mongod --dbpath /.../consCIENCIES/ddbb`
 
 __Step 4: MySQL actions (Tab 2)__
-Create an **user_db** and **pass_db* to manage this database and modify the file `settings.py` with the proper values.
 
 Directory: `cd /.../consCIENCIES/`   
 Database: `mysql -u user_db -p (pass_db)`
