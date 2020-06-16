@@ -96,16 +96,14 @@ Control and Administration:
 Version 1.0
 
 ## License ##
-CitizenSocialLab | consCIENCIES (c) by Julian Vicens
 
-CitizenSocialLab | consCIENCIES is licensed under a
-Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+CitizenSocialLab is licensed under a [GNU Affero General Public License](https://www.gnu.org/licenses/agpl-3.0.txt)
 
-You should have received a copy of the license along with this work. If not, see [CC BY-NC-SA license](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+All the contents of consCIENCIES repository are under the license [CC BY-NC-SA license](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ## Contributors ##
 
-[Julián Vicens](https://github.com/jvicens)
+[Julián Vicens](https://jvicens.github.io/)
 
 ## Contact ##
 
